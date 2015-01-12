@@ -1,5 +1,5 @@
 {
-	"name": "put_it_in",
+	"name": "PutItIn",
 	"version": "0.0.1",
 	"description": "Fullstack JavaScript with MongoDB, Express, AngularJS, and Node.js.",
 	"dependencies": {
