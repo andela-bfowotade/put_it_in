@@ -1,0 +1,39 @@
+/*customer section*/
+.cust-profile {
+  font-size: 250px;
+}
+
+.cust-list {
+  font-size: 100px;
+}
+
+.cust-list-spacing {
+	padding-bottom: 15px;
+	padding-top: 15px;
+}
+
+/*- edit section*/
+.checkbox-left {
+  width: 10%;
+  text-align: left;
+}
+
+.text-pink {
+	color: #EC407A;
+}
+
+input[type="radio"], input[type="checkbox"] {
+	margin: 0 0 0 !important;
+}
+/*confused smiley*/
+.smiley-confused-switch-false {
+	width: 320px;
+	height: 320px;
+	margin: 0 auto;
+}
+
+.cust-results p{
+	border: 0 !important;
+	clear: both;
+	padding: 10px;
+}

@@ -1,0 +1,84 @@
+<section data-ng-controller="CustomersController">
+  <div class="modal-header">
+    <h1>New Customer</h1>
+  </div>
+  <div class="modal-body">
+    <form name="createCustomerForm" class="form-horizontal">
+      <fieldset>
+
+        <div class="row">
+          <!--error-->
+          <div class="modal-body">
+            <div data-ng-show="error" class="text-center text-danger">
+              <div class="alert alert-danger" role="alert">
+                <strong data-ng-bind="error"></strong>
+              </div>
+            </div>
+          </div>
+      <!--end error-->
+          <div class="col-sm-6 text-center">
+            <i class="glyphicon glyphicon-user cust-profile" ng-class="{'text-primary': referred, ' text-pink': !referred}"></i>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <label class="control-label" for="firstname">First Name<sup>*</sup></label>
+            <div class="controls">
+              <input type="text" data-ng-model="firstName" id="firstname" class="form-control" required>
+            </div>
+            <label class="control-label" for="lastname">Last Name<sup>*</sup></label>
+            <div class="controls">
+              <input type="text" data-ng-model="lastName" id="lastname" class="form-control" required>
+            </div>
+            <label class="control-label" for="suburb">Suburb</label>
+            <div class="controls">
+              <input type="text" data-ng-model="suburb" id="suburb" class="form-control">
+            </div>
+            <label class="control-label" for="country">Country</label>
+            <div class="controls">
+              <input type="text" data-ng-model="country" id="country" class="form-control">
+            </div>
+          </div>
+           <div class="col-xs-12 col-sm-6 col-sm-push">
+            <label class="control-label" for="phone">Phone</label>
+            <div class="controls">
+              <input type="number" data-ng-model="phone" id="phone" class="form-control">
+            </div>
+            <label class="control-label" for="email">Email</label>
+            <div class="controls">
+              <input type="email" data-ng-model="email" id="email" class="form-control">
+            </div>
+          </div>
+        </div><!-- ./row -->
+        
+            <div class="row">
+              <div class="col-xs-6 col-sm-6">
+                <label class="control-label" for="referred">Referred</label>
+                <div class="controls checkbox-left">
+                  <input type="checkbox" data-ng-model="referred" id="referred" class="form-control">
+                </div>
+                <label class="control-label" for="channel">Channel</label>
+                <div class="controls">
+                  <span class="nullable">
+                    <select class="form-control" ng-model="myChannel" ng-options="channelPick.channelReferral for channelPick in channelOPtions">
+                      <option value="">-- choose channel --</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <label class="control-label" for="industry">Industry</label>
+                <div class="controls">
+                  <input type="text" data-ng-model="industry" id="industry" class="form-control">
+                </div>
+              </div>
+            </div><!--/.row -->
+            <br/>
+            <div class="modal-footer">
+              <button class="btn btn-success" ng-click="create(customer); ok()" ng-disabled="createCustomerForm.$invalid" type="submit">Create</button>
+              <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+            </div>
+        </div>
+      </fieldset>
+    </form>
+</section>

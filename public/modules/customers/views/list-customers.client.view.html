@@ -1,0 +1,37 @@
+<section data-ng-controller="CustomersController">
+  <div class="page-header">
+    <h1>Customers on Put It In</h1>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
+      <div class="col-lg-6">
+        <div class="input-group input-group-lg">
+          <input type="text" class="form-control" placeholder="Search..." ng-model="searchCustomer">
+          <span class="input-group-btn">
+            <button class="btn btn-default " type="button">Go!</button>
+          </span>
+        </div><!-- /input-group -->
+      </div><!-- /.col-lg-6 -->
+    </div>
+    <div class="col-xs-12 col-sm-4 text-center">
+      <button type="button" class="btn btn-warning text-center"  data-ng-click="modalCreate('lg', customer)">
+        <i class="glyphicon glyphicon-user"></i>
+        <br/>
+        New Customer
+      </button>
+    </div>
+  </div><!-- /.row -->
+  <br/>
+  <br/>
+  <customer-list></customer-list>
+
+  <!-- Add filtered results to avoid css conflict in custom directive -->
+  <div class="cust-results">
+    <h3>
+      <p class="bg-primary">{{ filtered.length}} Results.</p>
+    </h3>
+  </div>
+  <!-- end -->
+
+</section>
