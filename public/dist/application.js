@@ -7,7 +7,6 @@ var ApplicationConfiguration = (function() {
 	var applicationModuleVendorDependencies = ['ngResource', 'ngAnimate', 'ui.router', 'ui.bootstrap', 'ui.utils'];
 
 	// Add a new vertical module
-	
 	var registerModule = function(moduleName, dependencies) {
 		// Create angular module
 		angular.module(moduleName, dependencies || []);
