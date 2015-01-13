@@ -134,6 +134,12 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
         });
       }
     };
+
+    $scope.findOne = function() {
+      $scope.customer = Customers.get({
+        customerId: $stateParams.customerId
+      });
+    };
   }
 
 ]); //end module

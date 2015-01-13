@@ -26,10 +26,15 @@
         
               <span data-ng-switch-when="false">
                 <span data-ng-bind="customer.created | date:'medium'"></span>
-                <span class="pull-right"  data-ng-click="modalUpdate('lg', customer)" >
-                  <button class="btn btn-default">
+                <span class="pull-right"  >
+                  <button class="btn btn-default" data-ng-click="modalUpdate('lg', customer)">
                     <i class="glyphicon glyphicon-eye-open"></i>
                   </button>
+                  <a data-ng-href="#!/customers/{{customer._id}}">
+                    <button class="btn btn-default" >
+                      <i class="glyphicon glyphicon-stats"></i>
+                    </button>
+                  </a>
                 </span>
               </span>
             </small>
