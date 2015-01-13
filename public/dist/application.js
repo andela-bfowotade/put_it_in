@@ -7,6 +7,7 @@ var ApplicationConfiguration = (function() {
 	var applicationModuleVendorDependencies = ['ngResource', 'ngAnimate', 'ui.router', 'ui.bootstrap', 'ui.utils'];
 
 	// Add a new vertical module
+	
 	var registerModule = function(moduleName, dependencies) {
 		// Create angular module
 		angular.module(moduleName, dependencies || []);
@@ -334,40 +335,89 @@ angular.module('customers').config(['$stateProvider',
 
 var customersApp = angular.module('customers');
 
-customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authentication', 'Customers', '$modal', '$log',
-  function($scope, $stateParams, Authentication, Customers, $modal, $log) {
+customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authentication', 'Customers', '$modal', '$log', 'Notify',
+  function($scope, $stateParams, Authentication, Customers, $modal, $log, Notify) {
     
-    this.authentication = Authentication;
+    $scope.authentication = Authentication;
 
     //find a list of customers
-    this.customers = Customers.query();
+    $scope.customers = Customers.query();
 
- //open a modal window to create a single customer record
-    this.modalCreate = function (size) {
+     /*
+    //------------CREATE-------
+    */
+    $scope.create = function() {
+      var customer = new Customers ({
+        firstName: this.firstName,
+        lastName: this.lastName,
+        suburb: this.suburb,
+        email: this.email,
+        phone: this.phone,
+        industry: this.industry,
+        channel: this.channel,
+        referred: this.referred,
+        country: this.country
+      });
+      //redirect after save
+      customer.$save(function(response) {
+        Notify.sendMsg('NewCustomer', {'id': response._id});
 
-    var modalInstance = $modal.open({
-      templateUrl: 'modules/customers/views/create-customer.client.view.html',
-      controller: ["$scope", "$modalInstance", function ($scope, $modalInstance) {
+      },
 
-        $scope.ok = function () {
-            $modalInstance.close();
-        };
+      function(errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
+    };
 
-        $scope.cancel = function () {
-          $modalInstance.dismiss('cancel');
-        };
-      }],
-      size: size
-    });
+     //open a modal window to create a single customer record
+    $scope.modalCreate = function (size) {
 
-    modalInstance.result.then(function (selectedItem) {
-    }, function () {
-      $log.info('Modal dismissed at: ' + new Date());
-    });
-  };
+      var modalInstance = $modal.open({
+        templateUrl: 'modules/customers/views/create-customer.client.view.html',
+        controller: ["$scope", "$modalInstance", function ($scope, $modalInstance) {
+
+          $scope.ok = function () {
+              $modalInstance.close();
+          };
+
+          $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+          };
+        }],
+        size: size
+      });
+
+      modalInstance.result.then(function (selectedItem) {
+      }, function () {
+        $log.info('Modal dismissed at: ' + new Date());
+      });
+    };
+
+    /*
+    //------------UPDATE-------
+    */
+    $scope.update = function(updatedCustomer) {
+      var customer = updatedCustomer;
+
+      customer.$update(function() {
+        // $location.path('customers/' + customer._id);
+      },
+      function(errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
+
+    };
+
+    //options for channels
+    $scope.channelOPtions = [
+      {id:'1', channelReferral:'Facebook'},
+      {id:'2', channelReferral:'Twitter'},
+      {id:'3', channelReferral:'Google'},
+      {id:'4', channelReferral:'Email'}
+    ];
 
     //open a modal window to update a single customer record
-  this.modalUpdate = function (size, selectedCustomer) {
+  $scope.modalUpdate = function (size, selectedCustomer) {
 
     var modalInstance = $modal.open({
       templateUrl: 'modules/customers/views/edit-customer.client.view.html',
@@ -397,8 +447,12 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
     });
   };
 
+   /*
+    //------------ END UPDATE-------
+    */
+
     //remove existing user
-    this.remove = function(customer) {
+    $scope.remove = function(customer) {
       if  (customer) {
           customer.$remove();
 
@@ -421,7 +475,7 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
 customersApp.controller('CustomersCreateController', ['$scope', 'Customers', 'Notify',
   function($scope, Customers, Notify) {
 
-     this.create = function() {
+     $scope.create = function() {
       var customer = new Customers ({
         firstName: this.firstName,
         lastName: this.lastName,
@@ -443,36 +497,10 @@ customersApp.controller('CustomersCreateController', ['$scope', 'Customers', 'No
         $scope.error = errorResponse.data.message;
       });
     };
-  }
-
-]); //end module
-
-customersApp.controller('CustomersUpdateController', ['$scope','Customers', 
-  function($scope, Customers) {
-
-    this.update = function(updatedCustomer) {
-      var customer = updatedCustomer;
-
-      customer.$update(function() {
-        // $location.path('customers/' + customer._id);
-      },
-      function(errorResponse) {
-        $scope.error = errorResponse.data.message;
-      });
-
-    };
-
-    //options for channels
-    $scope.channelOPtions = [
-      {id:'1', channelReferral:'Facebook'},
-      {id:'2', channelReferral:'Twitter'},
-      {id:'3', channelReferral:'Google'},
-      {id:'4', channelReferral:'Email'}
-    ];
 
   }
-
 ]); //end module
+
 
 //Customer views directive
 customersApp.directive('customerList', ['Customers', 'Notify', function(Customers, Notify) {
@@ -485,7 +513,7 @@ customersApp.directive('customerList', ['Customers', 'Notify', function(Customer
       Notify.getMsg('NewCustomer', function(event, data) {
 
         //find a list of customers
-        scope.customersCtrl.customers = Customers.query();
+        scope.customers = Customers.query();
 
       });
     }
