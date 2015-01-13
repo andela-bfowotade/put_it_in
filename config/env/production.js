@@ -1,4 +1,5 @@
 'use strict';
+process.env.MONGOLAB_URI = 'mongodb://jihdeh:Omoyeni11.@ds031741.mongolab.com:31741/todosdb';
 
 module.exports = {
 	db: {
