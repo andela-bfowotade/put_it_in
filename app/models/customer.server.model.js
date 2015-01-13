@@ -36,7 +36,7 @@ var CustomerSchema = new Schema({
 		trim: true
 	},
 	phone: {
-		type: String,
+		type: Number,
 		default: '',
 		trim: true
 	},

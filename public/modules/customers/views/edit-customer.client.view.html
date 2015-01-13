@@ -28,6 +28,19 @@
                     <div class="controls">
                       <input type="text" data-ng-model="customer.lastName" id="lastname" class="form-control" required>
                     </div>
+                    <label class="control-label" for="phone">Phone</label>
+                  <div class="controls">
+                    <input type="number" data-ng-model="customer.phone" id="phone" class="form-control">
+                  </div>
+                  <label class="control-label" for="email">Email</label>
+                  <div class="controls">
+                    <input type="email" data-ng-model="customer.email" id="email" class="form-control">
+                  </div>
+                </div><!-- /.col -->
+              </div><!--/.row -->
+
+              <div class="row">
+                <div class="col-sm-6 col-sm-push-6">
                   <label class="control-label" for="suburb">Suburb</label>
                     <div class="controls">
                       <input type="text" data-ng-model="customer.suburb" id="suburb" class="form-control">
@@ -36,21 +49,8 @@
                     <div class="controls">
                       <input type="text" data-ng-model="customer.country" id="country" class="form-control">
                   </div>
-                </div><!-- /.col -->
-              </div><!--/.row -->
-
-              <div class="row">
-                <div class="col-sm-6 col-sm-push-6">
-                  <label class="control-label" for="phone">Phone</label>
-                  <div class="controls">
-                    <input type="number" data-ng-model="customer.phone" id="phone" class="form-control">
-                  </div>
-                  <label class="control-label" for="email">Email</label>
-                  <div class="controls">
-                    <input type="email" data-ng-model="customer.email" id="email" class="form-control">
-                  </div>
                 </div>
-                </div>
+              </div>
 
                 <div class="modal-body">
                   <div class="row">
@@ -61,11 +61,11 @@
                       </div>
                       <label class="control-label" for="channel">Channel</label>
                       <div class="controls">
-                       <span class="nullable">
-                        <select class="form-control" ng-model="myChannel" ng-options="channelPick.channelReferral for channelPick in channelOPtions">
-                          <option value="">-- choose channel --</option>
-                        </select>
-                      </span>
+                        <span class="nullable">
+                          <select class="form-control" data-ng-model="customer.channel" data-ng-options="channel.channelReferral as channel.channelReferral for channel in channelOptions">
+                            <option value="">-- choose channel --</option>
+                          </select>
+                        </span>
                       </div>
                     </div>
                   </div><!--/.row -->

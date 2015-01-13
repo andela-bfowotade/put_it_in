@@ -72,11 +72,10 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
       function(errorResponse) {
         $scope.error = errorResponse.data.message;
       });
-
     };
 
-    //options for channels
-    $scope.channelOPtions = [
+      //options for channels
+    $scope.channelOptions = [
       {id:'1', channelReferral:'Facebook'},
       {id:'2', channelReferral:'Twitter'},
       {id:'3', channelReferral:'Google'},
@@ -138,36 +137,6 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
   }
 
 ]); //end module
-
-customersApp.controller('CustomersCreateController', ['$scope', 'Customers', 'Notify',
-  function($scope, Customers, Notify) {
-
-     $scope.create = function() {
-      var customer = new Customers ({
-        firstName: this.firstName,
-        lastName: this.lastName,
-        suburb: this.suburb,
-        email: this.email,
-        phone: this.phone,
-        industry: this.industry,
-        channel: this.channel,
-        referred: this.referred,
-        country: this.country
-      });
-      //redirect after save
-      customer.$save(function(response) {
-        Notify.sendMsg('NewCustomer', {'id': response._id});
-
-      },
-
-      function(errorResponse) {
-        $scope.error = errorResponse.data.message;
-      });
-    };
-
-  }
-]); //end module
-
 
 //Customer views directive
 customersApp.directive('customerList', ['Customers', 'Notify', function(Customers, Notify) {
