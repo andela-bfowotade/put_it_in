@@ -1,5 +1,49 @@
 <section data-ng-controller="CustomersController" data-ng-init="findOne()">
-	<div class="page-header">
-		<h1 data-ng-bind="customer.firstName"></h1>
-		<p>Hold it up</p>
+	<br/>
+
+	<div class="row text-center cust-review-profile">
+	  <div class="col-md-4">		
+	  	<i class="glyphicon glyphicon-user cust-profile" ng-class="{'text-primary': customer.referred, 'text-pink': !customer.referred}"></i>
 		</div>
+		<br/>
+			<div class="col-md-7">		
+				<div class="table-responsive">
+	        <table class="table table-hover table-bordered">
+	          <th class="text-center">Fullname</th>
+	          <td>{{ customer.firstName }} {{ customer.lastName }}</td>
+	          <tr class="info">
+	          <th class="text-center">Email</th>
+	          <td>{{ customer.email }}</td>
+	          </tr> 
+	          <tr>
+	          <th class="text-center">Phone Number</th>
+	          <td>{{ customer.phone }}</td>
+	          </tr>
+	          <tr class="info">
+	          <th class="text-center">Country</th>
+	          <td>{{ customer.country }}</td>
+	          </tr>
+	          <tr>
+	          <th class="text-center">Referred</th>
+	          <td>{{ customer.reffered }}</td>
+	          </tr>
+	          <tr class="info">
+	          <th class="text-center">Channel</th>
+	          <td>{{ customer.channel }}</td>
+	          </tr>
+	        </table>
+	      </div>
+			</div>
+	</div>
+	
+	<section>
+		<h4>Ratings</h4>
+		<div ng-show="authentication.user._id != customer.user._id">
+		  <rating ng-model="customer.rating" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" ng-click="update(customer)" on-leave="overStar = null"></rating>
+		  <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar">{{percent}}%</span>
+
+		  <pre style="margin:15px 0;">Overall: <b>{{(customer.rating + rating)/2}}</b></pre>
+
+		  <hr />
+	  </div>
+  </section>

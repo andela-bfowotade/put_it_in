@@ -327,6 +327,10 @@ angular.module('customers').config(['$stateProvider',
       .state('listCustomers', {
         url: '/customers',
         templateUrl: 'modules/customers/views/list-customers.client.view.html'
+      })
+      .state('reviewCustomers', {
+      	url: '/customers/:customerId',
+      	templateUrl: 'modules/customers/views/reviews-customer.client.view.html'
       });
    }
 ]);
@@ -355,7 +359,8 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
         industry: this.industry,
         channel: this.channel,
         referred: this.referred,
-        country: this.country
+        country: this.country,
+        rating: this.rating
       });
       //redirect after save
       customer.$save(function(response) {
@@ -404,11 +409,10 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
       function(errorResponse) {
         $scope.error = errorResponse.data.message;
       });
-
     };
 
-    //options for channels
-    $scope.channelOPtions = [
+      //options for channels
+    $scope.channelOptions = [
       {id:'1', channelReferral:'Facebook'},
       {id:'2', channelReferral:'Twitter'},
       {id:'3', channelReferral:'Google'},
@@ -445,10 +449,37 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
       $log.info('Modal dismissed at: ' + new Date());
     });
   };
-
    /*
     //------------ END UPDATE-------
     */
+
+     /*
+    //------------FIND ONE -------
+    */
+    $scope.findOne = function() {
+     /*
+    //------------ RATING-------
+    */
+    $scope.max = 10;
+
+    $scope.hoveringOver = function(value) {
+      $scope.overStar = value;
+      $scope.percent = 100 * (value / $scope.max);
+    };
+
+    $scope.ratingStates = [
+      {stateOn: 'glyphicon-ok-sign', stateOff: 'glyphicon-ok-circle'},
+      {stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty'},
+      {stateOn: 'glyphicon-heart', stateOff: 'glyphicon-ban-circle'},
+      {stateOn: 'glyphicon-heart'},
+      {stateOff: 'glyphicon-off'}
+    ];
+
+      $scope.customer = Customers.get({
+        customerId: $stateParams.customerId
+      });
+    };
+
 
     //remove existing user
     $scope.remove = function(customer) {
@@ -470,36 +501,6 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
   }
 
 ]); //end module
-
-customersApp.controller('CustomersCreateController', ['$scope', 'Customers', 'Notify',
-  function($scope, Customers, Notify) {
-
-     $scope.create = function() {
-      var customer = new Customers ({
-        firstName: this.firstName,
-        lastName: this.lastName,
-        suburb: this.suburb,
-        email: this.email,
-        phone: this.phone,
-        industry: this.industry,
-        channel: this.channel,
-        referred: this.referred,
-        country: this.country
-      });
-      //redirect after save
-      customer.$save(function(response) {
-        Notify.sendMsg('NewCustomer', {'id': response._id});
-
-      },
-
-      function(errorResponse) {
-        $scope.error = errorResponse.data.message;
-      });
-    };
-
-  }
-]); //end module
-
 
 //Customer views directive
 customersApp.directive('customerList', ['Customers', 'Notify', function(Customers, Notify) {

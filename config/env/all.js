@@ -3,7 +3,7 @@
 module.exports = {
 	app: {
 		title: 'Put It In',
-		description: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js',
+		description: 'Customer Review Applications',
 		keywords: 'mongodb, express, angularjs, node.js, mongoose, passport'
 	},
 	port: process.env.PORT || 3000,

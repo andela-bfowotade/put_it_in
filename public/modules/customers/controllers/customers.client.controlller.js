@@ -23,7 +23,8 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
         industry: this.industry,
         channel: this.channel,
         referred: this.referred,
-        country: this.country
+        country: this.country,
+        rating: this.rating
       });
       //redirect after save
       customer.$save(function(response) {
@@ -112,10 +113,37 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
       $log.info('Modal dismissed at: ' + new Date());
     });
   };
-
    /*
     //------------ END UPDATE-------
     */
+
+     /*
+    //------------FIND ONE -------
+    */
+    $scope.findOne = function() {
+     /*
+    //------------ RATING-------
+    */
+    $scope.max = 10;
+
+    $scope.hoveringOver = function(value) {
+      $scope.overStar = value;
+      $scope.percent = 100 * (value / $scope.max);
+    };
+
+    $scope.ratingStates = [
+      {stateOn: 'glyphicon-ok-sign', stateOff: 'glyphicon-ok-circle'},
+      {stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty'},
+      {stateOn: 'glyphicon-heart', stateOff: 'glyphicon-ban-circle'},
+      {stateOn: 'glyphicon-heart'},
+      {stateOff: 'glyphicon-off'}
+    ];
+
+      $scope.customer = Customers.get({
+        customerId: $stateParams.customerId
+      });
+    };
+
 
     //remove existing user
     $scope.remove = function(customer) {
@@ -133,12 +161,6 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
           // $location.path('customers');
         });
       }
-    };
-
-    $scope.findOne = function() {
-      $scope.customer = Customers.get({
-        customerId: $stateParams.customerId
-      });
     };
   }
 
