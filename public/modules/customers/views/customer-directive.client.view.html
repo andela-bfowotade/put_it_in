@@ -26,10 +26,15 @@
         
               <span data-ng-switch-when="false">
                 <span data-ng-bind="customer.created | date:'medium'"></span>
-                <span class="pull-right"  data-ng-click="modalUpdate('lg', customer)" >
-                  <button class="btn btn-default">
+                <span class="pull-right"  >
+                  <button class="btn btn-default" data-ng-click="modalUpdate('lg', customer)">
                     <i class="glyphicon glyphicon-eye-open"></i>
                   </button>
+                  <a data-ng-href="#!/customers/{{customer._id}}">
+                    <button class="btn btn-default" >
+                      <i class="glyphicon glyphicon-stats"></i>
+                    </button>
+                  </a>
                 </span>
               </span>
             </small>
@@ -38,7 +43,14 @@
       </div>
     </div>
   </div>
-
+</div>
+  <!-- Add filtered results-->
+  <div class="cust-results">
+    <h3>
+      <p class="bg-primary">{{ filtered.length}} Results.</p>
+    </h3>
+  </div>
+  <!-- end -->
   <div class="alert alert-warning text-center" data-ng-if="customers.$resolved && !customers.length">
     No customers yet, why don't you <a href="/#!/customers/create">create one</a>?
   </div>

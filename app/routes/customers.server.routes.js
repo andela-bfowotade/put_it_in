@@ -12,7 +12,7 @@ var users = require('../../app/controllers/users.server.controller'),
 
     app.route('/customers/:customerId')
       .get(customers.read)
-      .put(users.requiresLogin, customers.hasAuthorization, customers.update)
+      .put(users.requiresLogin, customers.update)
       .delete(users.requiresLogin, customers.hasAuthorization, customers.delete);
 
       //finish by binding the customer middleware

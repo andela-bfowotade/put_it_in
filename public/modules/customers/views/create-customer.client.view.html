@@ -58,7 +58,7 @@
                 <label class="control-label" for="channel">Channel</label>
                 <div class="controls">
                   <span class="nullable">
-                    <select class="form-control" ng-model="myChannel" ng-options="channelPick.channelReferral for channelPick in channelOPtions">
+                    <select class="form-control" data-ng-model="channel" ng-options="channel.channelReferral as channel.channelReferral for channel in channelOptions">
                       <option value="">-- choose channel --</option>
                     </select>
                   </span>
@@ -75,7 +75,7 @@
             </div><!--/.row -->
             <br/>
             <div class="modal-footer">
-              <button class="btn btn-success" ng-click="create(customer); ok()" ng-disabled="createCustomerForm.$invalid" type="submit">Create</button>
+              <button class="btn btn-success" data-ng-click="create(customer); ok()" ng-disabled="createCustomerForm.$invalid" type="submit">Create</button>
               <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
             </div>
         </div>

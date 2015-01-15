@@ -36,7 +36,7 @@ var CustomerSchema = new Schema({
 		trim: true
 	},
 	phone: {
-		type: String,
+		type: Number,
 		default: '',
 		trim: true
 	},
@@ -60,6 +60,9 @@ var CustomerSchema = new Schema({
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
+	},
+	rating: {
+		type: Array
 	}
 });
 

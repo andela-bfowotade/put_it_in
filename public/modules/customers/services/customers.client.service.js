@@ -23,8 +23,6 @@ angular.module('customers')
 		notify.sendMsg = function(msg, data) {
 			data = data || {};
 			$rootScope.$emit(msg, data);
-
-			console.log('mesage sent!');
 		};
 
 		notify.getMsg = function(msg, func, scope) {
