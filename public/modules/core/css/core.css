@@ -19,12 +19,6 @@ body.ng-cloak
 	display: block;
 }
 
-body{
+body {
 	background-color: #eee;
-}
-
-.topbanner {
-	width: 100%;
-  background-image:url('/core/img/brand/bglarge.png');
-  background-size: cover;
 }
