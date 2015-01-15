@@ -34,9 +34,8 @@ var mongoose = require('mongoose'),
 
   exports.update = function(req, res) {
     var customer = req.customer;
-    customer = _.extend(customer, req.body);
 
-    console.log('From front end',  customer);
+    customer = _.extend(customer, req.body);
 
     customer.save(function(err) {
       if (err) {
