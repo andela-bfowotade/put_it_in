@@ -25,6 +25,6 @@ body{
 
 .topbanner {
 	width: 100%;
-  background-image:url('modules/core/img/brand/bglarge.png');
+  background-image:url('/core/img/brand/bglarge.png');
   background-size: cover;
 }

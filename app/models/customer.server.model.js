@@ -3,21 +3,6 @@
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
-/**
-**
-**	Rating Schema collection
-**/
-
-// var RatingSchema = new mongoose.Schema({
-// 	user: {
-// 		type: Schema.ObjectId,
-// 		ref: 'User'
-// 	},
-// 	rating: {
-// 		type: Number,
-// 		default: 5
-// 	}
-// });
 
 /**
 **
@@ -77,10 +62,8 @@ var CustomerSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'User'
 	},
-	// ratings: [RatingSchema]
 	rating: {
-		type: Number,
-		default: 2
+		type: Array
 	}
 });
 

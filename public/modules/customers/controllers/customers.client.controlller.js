@@ -122,9 +122,9 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
     */
     $scope.findOne = function() {
      /*
-    //------------ RATING-------
+    //------------ RATING FRONTEND-------
     */
-    $scope.max = 10;
+    $scope.max = 5;
 
     $scope.hoveringOver = function(value) {
       $scope.overStar = value;
@@ -138,10 +138,28 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
       {stateOn: 'glyphicon-heart'},
       {stateOff: 'glyphicon-off'}
     ];
-
       $scope.customer = Customers.get({
         customerId: $stateParams.customerId
       });
+    };
+
+    /*
+    //------------ RATING BackEndEND-------
+    */
+    $scope.updateRating = function (rating) {
+
+      var rateLoop = function () {
+        var lenRating = $scope.customer.rating.length;
+        for (var i = 0; i < lenRating; i++) {
+          return lenRating;
+        }
+      };
+      rateLoop();
+
+      var newRate = (rateLoop() + rating) / 2; //get average
+
+      $scope.customer.rating.push(newRate);
+      $scope.update($scope.customer);
     };
 
 
