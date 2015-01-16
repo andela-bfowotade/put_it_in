@@ -63,7 +63,11 @@ var CustomerSchema = new Schema({
 	},
 	rating: {
 		type: Array
-	}
+	},
+	reviews: [{
+		person: {type: String, default:'USER000'},
+    review: {type: String, default:'NO CONTENT'}
+  }]
 });
 
 mongoose.model('Customer', CustomerSchema);

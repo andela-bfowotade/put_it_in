@@ -114,17 +114,18 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
     });
   };
    /*
-    //------------ END UPDATE-------
+    //------------ ./END UPDATE-------
     */
 
      /*
-    //------------FIND ONE -------
+    //------------FIND ONE CUSTOMER-------
     */
     $scope.findOne = function() {
      /*
     //------------ RATING FRONTEND-------
     */
     $scope.max = 5;
+    $scope.isReadonly = false;
 
     $scope.hoveringOver = function(value) {
       $scope.overStar = value;
@@ -144,7 +145,7 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
     };
 
     /*
-    //------------ RATING BackEndEND-------
+    //------------ RATING BACKEND-------
     */
     $scope.updateRating = function (rating) {
 
@@ -162,8 +163,21 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
       $scope.update($scope.customer);
     };
 
+    /*
+    //------------ REVIEW BACKEND-------
+    */
+    $scope.updateReview = function (review) {
+      var item = {
+        person: $scope.person,
+        review: $scope.personReview
+      };
+      $scope.customer.reviews.push(item);
+      $scope.update($scope.customer);
+    };
 
-    //remove existing user
+    /*
+    //------------ REMOVE-------
+    */
     $scope.remove = function(customer) {
       if  (customer) {
           customer.$remove();
@@ -201,3 +215,12 @@ customersApp.directive('customerList', ['Customers', 'Notify', function(Customer
     }
   };
 }]);
+
+//filter to capitalize first Letter for the reviewers name
+customersApp.filter('capitalize', function() {
+  return function(input, scope) {
+    if (input!=null)
+    input = input.toLowerCase();
+    return input.substring(0,1).toUpperCase()+input.substring(1);
+  }
+});
