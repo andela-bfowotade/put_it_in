@@ -95,16 +95,18 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 'use strict';
 
 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication',
-  function($scope, Authentication) {
+angular.module('core').controller('HomeController', ['$scope', 'Authentication', 'Customers',
+  function($scope, Authentication, Customers) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
+
+    $scope.customers = Customers.query();
 
     $scope.alerts = [
       {
         icon: 'glyphicon-user',
         color: 'btn-success',
-        total: '20,400',
+        total: $scope.customers,
         description: 'TOTAL CUSTOMERS'
       },
       {
@@ -313,9 +315,7 @@ angular.module('core').service('Menus', [
 angular.module('customers').run(['Menus',
 	function(Menus) {
 		// Set top bar menu items
-		Menus.addMenuItem('topbar', 'Customers', 'customers', 'dropdown', '/customers(/create)?');
-		Menus.addSubMenuItem('topbar', 'customers', 'List Customers', 'customers');
-		Menus.addSubMenuItem('topbar', 'customers', 'New Customers', 'customers/create');
+		Menus.addMenuItem('topbar', 'Show All', 'customers', 'customers');
 	}
 ]);
 'use strict';
@@ -453,6 +453,7 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
     //------------ ./END UPDATE-------
     */
 
+
      /*
     //------------FIND ONE CUSTOMER-------
     */
@@ -503,11 +504,10 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
     //------------ REVIEW BACKEND-------
     */
     $scope.updateReview = function (review) {
-      var item = {
-        person: $scope.person,
+      var data = {
         review: $scope.personReview
       };
-      $scope.customer.reviews.push(item);
+      $scope.customer.reviews.push(data);
       $scope.update($scope.customer);
     };
 
@@ -555,10 +555,11 @@ customersApp.directive('customerList', ['Customers', 'Notify', function(Customer
 //filter to capitalize first Letter for the reviewers name
 customersApp.filter('capitalize', function() {
   return function(input, scope) {
-    if (input!=null)
+    if (input!== null)
     input = input.toLowerCase();
     return input.substring(0,1).toUpperCase()+input.substring(1);
-  }
+  };
+
 });
 'use strict';
 

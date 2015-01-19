@@ -23,7 +23,7 @@ module.exports = {
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || '748093765273616',
 		clientSecret: process.env.FACEBOOK_SECRET || 'e9d868d9b040d879b2b74bd2fe5f1fc9',
-		callbackURL: 'http://localhost:3000/auth/facebook/callback'
+		callbackURL: 'https://glacial-scrubland-6293.herokuapp.com/auth/facebook/callback'
 	},
 	twitter: {
 		clientID: process.env.TWITTER_KEY || 'CONSUMER_KEY',
