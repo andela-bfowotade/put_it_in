@@ -117,6 +117,7 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
     //------------ ./END UPDATE-------
     */
 
+
      /*
     //------------FIND ONE CUSTOMER-------
     */
@@ -167,11 +168,10 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
     //------------ REVIEW BACKEND-------
     */
     $scope.updateReview = function (review) {
-      var item = {
-        person: $scope.person,
+      var data = {
         review: $scope.personReview
       };
-      $scope.customer.reviews.push(item);
+      $scope.customer.reviews.push(data);
       $scope.update($scope.customer);
     };
 
@@ -219,8 +219,9 @@ customersApp.directive('customerList', ['Customers', 'Notify', function(Customer
 //filter to capitalize first Letter for the reviewers name
 customersApp.filter('capitalize', function() {
   return function(input, scope) {
-    if (input!=null)
+    if (input!== null)
     input = input.toLowerCase();
     return input.substring(0,1).toUpperCase()+input.substring(1);
-  }
+  };
+
 });

@@ -37,9 +37,9 @@ module.exports = {
 		js: 'public/dist/application.min.js'
 	},
 	facebook: {
-		clientID: process.env.FACEBOOK_ID || 'APP_ID',
-		clientSecret: process.env.FACEBOOK_SECRET || 'APP_SECRET',
-		callbackURL: '/auth/facebook/callback'
+		clientID: process.env.FACEBOOK_ID || '748093765273616',
+		clientSecret: process.env.FACEBOOK_SECRET || 'e9d868d9b040d879b2b74bd2fe5f1fc9',
+		callbackURL: 'http://localhost:3000/auth/facebook/callback'
 	},
 	twitter: {
 		clientID: process.env.TWITTER_KEY || 'CONSUMER_KEY',

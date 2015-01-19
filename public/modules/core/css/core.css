@@ -26,4 +26,82 @@ body.ng-cloak
 
 body {
 	background-color: #eee;
+	padding-top: 20px;
+	padding-left: 0;
+	padding-right: 0;
+	margin: 0;
+	width: 100%;
+}
+
+.jumbotron{
+	background-color: #cec;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+ 
+.btn-primary {
+    background: #0099cc;
+    color: #ffffff;
+}
+ 
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #33a6cc;
+}
+ 
+.btn-primary:active, .btn-primary.active {
+    background: #007299;
+    box-shadow: none;
+}
+
+.btn-success {
+    background: #5cb85c;
+    color: #ffffff;
+}
+ 
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open > .dropdown-toggle.btn-success {
+    background: #5cb84b;
+}
+ 
+.btn-success:active, .btn-success.active {
+    background: #007299;
+    box-shadow: none;
+}
+
+.btn.sharp {
+  border-radius:0;
+}
+.btn-custom-main-primary {
+	margin-right: 20px;
+	padding: 14px 24px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+}
+.btn-custom-main-success {
+	margin-right: 20px;
+	padding: 14px 24px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+}
+
+/*************** FOOTER **********************/
+.bottom {
+    background-color: #474747;
+    margin-top: 50px;
+}
+.bottom .container {
+    background-color: #373737;
+    min-height: 150px;
+}
+.bottom .container h3 {
+    color: #999;
+}
+.bottom .container p {
+    color: #666;
 }

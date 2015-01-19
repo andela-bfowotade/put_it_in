@@ -65,7 +65,7 @@ var CustomerSchema = new Schema({
 		type: Array
 	},
 	reviews: [{
-		person: {type: String, default:'USER000'},
+		person: {type: String, default: 'Anon'},
     review: {type: String, default:'NO CONTENT'}
   }]
 });
