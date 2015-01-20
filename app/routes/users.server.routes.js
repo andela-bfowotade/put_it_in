@@ -45,7 +45,12 @@ module.exports = function(app) {
 	app.route('/auth/google/callback').get(users.oauthCallback('google'));
 
 	// Setting the linkedin oauth routes
-	app.route('/auth/linkedin').get(passport.authenticate('linkedin'));
+	app.route('/auth/linkedin').get(passport.authenticate('linkedin', {
+		scope: [
+			'r_basicprofile',
+			'r_emailaddress'
+		]
+	}));
 	app.route('/auth/linkedin/callback').get(users.oauthCallback('linkedin'));
 
 	// Setting the github oauth routes

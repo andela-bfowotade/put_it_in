@@ -42,18 +42,18 @@ module.exports = {
 		callbackURL: 'https://glacial-scrubland-6293.herokuapp.com/auth/facebook/callback'
 	},
 	twitter: {
-		clientID: process.env.TWITTER_KEY || 'CONSUMER_KEY',
-		clientSecret: process.env.TWITTER_SECRET || 'CONSUMER_SECRET',
+		clientID: process.env.TWITTER_KEY || '2qH0qR4BfMeG2HTvy8ZtIvpDN',
+		clientSecret: process.env.TWITTER_SECRET || 'Ehmfq5MnZIOzR9HTO3cOeKvbCwwIW0ir1pUusyY2g8canpMj6g',
 		callbackURL: '/auth/twitter/callback'
 	},
 	google: {
-		clientID: process.env.GOOGLE_ID || 'APP_ID',
-		clientSecret: process.env.GOOGLE_SECRET || 'APP_SECRET',
+		clientID: process.env.GOOGLE_ID || '351501032015-r2d12lt54je377fhaacdiah06ehkf6tc.apps.googleusercontent.com',
+		clientSecret: process.env.GOOGLE_SECRET || 'q2dnHkTgFqBkTKyCAcsef_Ub',
 		callbackURL: '/auth/google/callback'
 	},
 	linkedin: {
-		clientID: process.env.LINKEDIN_ID || 'APP_ID',
-		clientSecret: process.env.LINKEDIN_SECRET || 'APP_SECRET',
+		clientID: process.env.LINKEDIN_ID || '77ag6lvgnawyej',
+		clientSecret: process.env.LINKEDIN_SECRET || '0o11SUsvxloHcaUH',
 		callbackURL: '/auth/linkedin/callback'
 	},
 	github: {
