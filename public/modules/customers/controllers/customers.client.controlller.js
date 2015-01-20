@@ -61,6 +61,8 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
       });
     };
 
+
+
     /*
     //------------UPDATE-------
     */
@@ -175,6 +177,8 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
       $scope.update($scope.customer);
     };
 
+
+
     /*
     //------------ REMOVE-------
     */
@@ -198,6 +202,8 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', 'Authe
 
 ]); //end module
 
+
+
 //Customer views directive
 customersApp.directive('customerList', ['Customers', 'Notify', function(Customers, Notify) {
   return {
@@ -215,6 +221,7 @@ customersApp.directive('customerList', ['Customers', 'Notify', function(Customer
     }
   };
 }]);
+
 
 //filter to capitalize first Letter for the reviewers name
 customersApp.filter('capitalize', function() {

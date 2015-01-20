@@ -49,36 +49,36 @@
           </div>
         </div><!-- ./row -->
         
-            <div class="row">
-              <div class="col-xs-6 col-sm-6">
-                <label class="control-label" for="referred">Referred</label>
-                <div class="controls checkbox-left">
-                  <input type="checkbox" data-ng-model="referred" id="referred" class="form-control">
-                </div>
-                <label class="control-label" for="channel">Channel</label>
-                <div class="controls">
-                  <span class="nullable">
-                    <select class="form-control" data-ng-model="channel" ng-options="channel.channelReferral as channel.channelReferral for channel in channelOptions">
-                      <option value="">-- choose channel --</option>
-                    </select>
-                  </span>
-                </div>
-              </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-6">
+            <label class="control-label" for="referred">Referred</label>
+            <div class="controls checkbox-left">
+              <input type="checkbox" data-ng-model="referred" id="referred" class="form-control">
             </div>
-            <div class="row">
-              <div class="col-sm-6">
-                <label class="control-label" for="industry">Industry</label>
-                <div class="controls">
-                  <input type="text" data-ng-model="industry" id="industry" class="form-control">
-                </div>
-              </div>
-            </div><!--/.row -->
-            <br/>
-            <div class="modal-footer">
-              <button class="btn btn-success" data-ng-click="create(customer); ok()" ng-disabled="createCustomerForm.$invalid" type="submit">Create</button>
-              <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+            <label class="control-label" for="channel">Channel</label>
+            <div class="controls">
+              <span class="nullable">
+                <select class="form-control" data-ng-model="channel" data-ng-options="channel.channelReferral as channel.channelReferral for channel in channelOptions">
+                  <option value="">-- choose channel --</option>
+                </select>
+              </span>
             </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <label class="control-label" for="industry">Industry</label>
+            <div class="controls">
+              <input type="text" data-ng-model="industry" id="industry" class="form-control">
+            </div>
+          </div>
+        </div><!--/.row -->
+        <br/>
+        <div class="modal-footer">
+          <button class="btn btn-success" data-ng-click="create(customer); ok()" data-ng-disabled="createCustomerForm.$invalid" type="submit">Create</button>
+          <button class="btn btn-warning" data-ng-click="cancel()">Cancel</button>
         </div>
       </fieldset>
     </form>
+  </div> <!-- ./modal body -->
 </section>

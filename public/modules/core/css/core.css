@@ -33,8 +33,8 @@ body {
 	width: 100%;
 }
 
-.jumbotron{
-	background-color: #cec;
+.front-page{
+	background-color: #dec;
 }
 .btn:focus, .btn:active:focus, .btn.active:focus {
     outline: 0 none;
