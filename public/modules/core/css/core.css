@@ -33,9 +33,11 @@ body {
 	width: 100%;
 }
 
-.front-page{
+.front-page {
 	background-color: #dec;
 }
+
+/*custom buttons*/
 .btn:focus, .btn:active:focus, .btn.active:focus {
     outline: 0 none;
 }

@@ -24,10 +24,15 @@
 	color: #EC407A;
 }
 
+.list-group {
+	font-family: 'Droid Serif', serif;
+}
+
 input[type="radio"], input[type="checkbox"] {
 	margin: 0 0 0 !important;
 }
 
+/*/reviews page*/
 .cust-results p{
 	border: 0 !important;
 	clear: both;
@@ -40,8 +45,4 @@ input[type="radio"], input[type="checkbox"] {
 
 .cust-rating {
 	padding: 10px;
-}
-
-.list-group {
-	font-family: 'Droid Serif', serif;
 }
